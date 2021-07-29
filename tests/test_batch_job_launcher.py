@@ -112,6 +112,7 @@ class TestRetriever(unittest.TestCase):
         generate_monitoring_error_message_payload_mock.assert_not_called()
         send_sns_message_mock.assert_not_called()
 
+
 class TestRetriever(unittest.TestCase):
     @mock.patch("batch_job_launcher_lambda.batch_job_launcher.send_sns_message")
     @mock.patch(
@@ -146,10 +147,11 @@ class TestRetriever(unittest.TestCase):
         }
 
         error_message = "test_error_message"
-        error_response = {'Error':{'Code':'test_error_code', 'Message':error_message}}
+        error_response = {
+            "Error": {"Code": "test_error_code", "Message": error_message}
+        }
         client_error = botocore.exceptions.ClientError(
-            error_response=error_response,
-            operation_name="op_name"
+            error_response=error_response, operation_name="op_name"
         )
 
         submit_batch_job_mock.side_effect = client_error
@@ -340,7 +342,7 @@ class TestRetriever(unittest.TestCase):
         batch_mock = mock.MagicMock()
         batch_mock.submit_job = mock.MagicMock()
 
-        parameters = "{\"test_key\": \"test_value\"}"
+        parameters = '{"test_key": "test_value"}'
 
         batch_job_launcher.submit_batch_job(
             batch_mock,
@@ -354,7 +356,7 @@ class TestRetriever(unittest.TestCase):
             jobName=JOB_NAME,
             jobQueue=JOB_QUEUE_NAME,
             jobDefinition=JOB_DEFINITION_NAME,
-            parameters=parameters
+            parameters=parameters,
         )
 
 

@@ -174,16 +174,16 @@ def handler(event, context):
 
         logger.info(
             f'Batch job submitted successfully", '
-            + f'"job_queue": "{args.batch_job_queue}", "job_name": "{args.batch_job_name}", ' 
+            + f'"job_queue": "{args.batch_job_queue}", "job_name": "{args.batch_job_name}", '
             + f'"job_definition_name": "{args.batch_job_definition_name}", '
             + f'"job_arn": "{job_arn}", "job_id": "{job_id}'
         )
     except botocore.exceptions.ClientError as err:
-        error_message = err.response['Error']['Message']
+        error_message = err.response["Error"]["Message"]
 
         logger.error(
             f'Error occurred submitting batch job", "error_message": "{error_message}", '
-            + f'"job_queue": "{args.batch_job_queue}", "job_name": "{args.batch_job_name}", ' 
+            + f'"job_queue": "{args.batch_job_queue}", "job_name": "{args.batch_job_name}", '
             + f'"job_definition_name": "{args.batch_job_definition_name}'
         )
 
@@ -348,13 +348,11 @@ def submit_batch_job(
             jobName=job_name,
             jobQueue=job_queue,
             jobDefinition=job_definition_name,
-            parameters=parameters
+            parameters=parameters,
         )
     else:
         return batch_client.submit_job(
-            jobName=job_name,
-            jobQueue=job_queue,
-            jobDefinition=job_definition_name
+            jobName=job_name, jobQueue=job_queue, jobDefinition=job_definition_name
         )
 
 

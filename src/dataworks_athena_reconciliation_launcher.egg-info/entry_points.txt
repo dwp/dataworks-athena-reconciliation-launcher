@@ -1,0 +1,3 @@
+[console_scripts]
+batch_job_trigger = batch_job_launcher:main
+

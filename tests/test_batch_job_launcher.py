@@ -335,7 +335,7 @@ class TestRetriever(unittest.TestCase):
         self.assertEqual(expected_payload, actual_payload)
 
     @mock.patch("batch_job_launcher_lambda.batch_job_launcher.logger")
-    def test_submit_batch_job_sends_right_message(
+    def test_submit_batch_job_sends_right_message_with_parameters(
         self,
         mock_logger,
     ):
@@ -357,6 +357,30 @@ class TestRetriever(unittest.TestCase):
             jobQueue=JOB_QUEUE_NAME,
             jobDefinition=JOB_DEFINITION_NAME,
             parameters=parameters,
+        )
+
+    @mock.patch("batch_job_launcher_lambda.batch_job_launcher.logger")
+    def test_submit_batch_job_sends_right_message_without_parameters(
+            self,
+            mock_logger,
+    ):
+        batch_mock = mock.MagicMock()
+        batch_mock.submit_job = mock.MagicMock()
+
+        parameters = ''
+
+        batch_job_launcher.submit_batch_job(
+            batch_mock,
+            JOB_QUEUE_NAME,
+            JOB_NAME,
+            JOB_DEFINITION_NAME,
+            parameters
+        )
+
+        batch_mock.submit_job.assert_called_once_with(
+            jobName=JOB_NAME,
+            jobQueue=JOB_QUEUE_NAME,
+            jobDefinition=JOB_DEFINITION_NAME,
         )
 
 

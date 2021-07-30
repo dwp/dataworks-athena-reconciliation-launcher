@@ -361,20 +361,16 @@ class TestRetriever(unittest.TestCase):
 
     @mock.patch("batch_job_launcher_lambda.batch_job_launcher.logger")
     def test_submit_batch_job_sends_right_message_without_parameters(
-            self,
-            mock_logger,
+        self,
+        mock_logger,
     ):
         batch_mock = mock.MagicMock()
         batch_mock.submit_job = mock.MagicMock()
 
-        parameters = ''
+        parameters = ""
 
         batch_job_launcher.submit_batch_job(
-            batch_mock,
-            JOB_QUEUE_NAME,
-            JOB_NAME,
-            JOB_DEFINITION_NAME,
-            parameters
+            batch_mock, JOB_QUEUE_NAME, JOB_NAME, JOB_DEFINITION_NAME, parameters
         )
 
         batch_mock.submit_job.assert_called_once_with(

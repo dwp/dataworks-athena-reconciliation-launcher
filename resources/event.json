@@ -1,0 +1,8 @@
+{
+    "correlation_id": "test_1",
+    "collection_name": "db.test.collection",
+    "snapshot_type": "incremental",
+    "export_date": "2020-01-22",
+    "shutdown_flag": "true",
+    "reprocess_files": "true"
+}

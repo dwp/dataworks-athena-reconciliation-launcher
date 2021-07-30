@@ -42,7 +42,7 @@ jobs:
           cp src/batch_job_launcher_lambda/*.py artifacts/
       - name: Produce zip
         working-directory: ./artifacts
-        run: zip -qq -r ../athena-reconcilation-launcher-${{ needs.get-publish-version.outputs.publish-version }}.zip *
+        run: zip -qq -r ../athena-reconciliation-launcher-${{ needs.get-publish-version.outputs.publish-version }}.zip *
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@latest
@@ -60,6 +60,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: athena-reconcilation-launcher-${{ needs.get-publish-version.outputs.publish-version }}.zip
-          asset_name: athena-reconcilation-launcher-${{ needs.get-publish-version.outputs.publish-version }}.zip
+          asset_path: athena-reconciliation-launcher-${{ needs.get-publish-version.outputs.publish-version }}.zip
+          asset_name: athena-reconciliation-launcher-${{ needs.get-publish-version.outputs.publish-version }}.zip
           asset_content_type: application/zip

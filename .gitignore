@@ -13,3 +13,4 @@ aviator_pipeline.yml
 **/tests/__pycache__/
 **/*.egg-info/
 **/.vscode/
+venv/**

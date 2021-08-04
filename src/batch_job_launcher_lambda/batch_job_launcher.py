@@ -115,7 +115,7 @@ def get_parameters():
         _args.batch_job_definition_name = os.environ["BATCH_JOB_DEFINITION_NAME"]
 
     if "BATCH_PARAMETERS_JSON" in os.environ:
-        _args.batch_parameters_json = os.environ["BATCH_PARAMETERS_JSON"]
+        _args.batch_parameters_json = json.loads(os.environ["BATCH_PARAMETERS_JSON"])
     else:
         _args.batch_parameters_json = None
 

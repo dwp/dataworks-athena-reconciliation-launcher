@@ -1,3 +1,5 @@
+# DO NOT USE THIS REPO - MIGRATED TO GITLAB
+
 # dataworks-athena-reconciliation-launcher
 
 ## A Lambda which triggers from AWS Glue success events and kicks off required AWS Batch jobs.
